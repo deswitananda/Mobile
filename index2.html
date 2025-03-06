@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- Gunakan meta mobile-web-app-capable untuk dukungan mobile -->
+  <!-- Mobile meta tags -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -17,14 +17,21 @@
   <link rel="icon" type="image/png" href="assets/img/favicon/favicon2.png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/img/favicon/favicon2.png">
 
-  <!-- Bootstrap 4 CSS -->
+  <!-- Normalize CSS -->
+  <link rel="stylesheet" href="assets/css/normalize.css">
+  
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <!-- Additional CSS -->
+  
+  <!-- Icon & Remixicon -->
   <link rel="stylesheet" href="assets/css/icons.css">
   <link rel="stylesheet" href="assets/css/remixicon.css">
-  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+  
+  <!-- Owl Carousel & Swiper -->
   <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-  <link rel="stylesheet" href="assets/css/normalize.css">
+  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+  
+  <!-- CSS Utama -->
   <link rel="stylesheet" href="assets/css/main.css">
 
   <link rel="manifest" href="_manifest.json"/>
@@ -35,7 +42,7 @@
       background-color: #F2F6FC;
       margin: 0;
       padding: 0;
-      padding-bottom: 60px; /* Ruang tambahan untuk footer */
+      padding-bottom: 60px; /* Ruang untuk footer */
       font-family: 'Arial', sans-serif;
       color: #000;
     }
@@ -50,15 +57,24 @@
       top: 0;
       z-index: 999;
       background-color: #003B73;
-      padding: 5px 15px; /* Sedikit padding */
-      text-align: center; /* Tulisan di tengah */
+      padding: 5px 15px;
+      text-align: center;
     }
-    /* Tampilkan tulisan DASHBOARD di tengah */
     .header-sticky.multi_item .header-title {
       color: #fff;
       margin: 0;
       font-size: 18px;
       font-weight: 600;
+    }
+    .main_haeder {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60px;
+      background-color: #f8f9fa;
+    }
+    .header-title {
+      margin: 0;
     }
     body.dark-mode .header-sticky.multi_item {
       background-color: #141627;
@@ -67,10 +83,10 @@
     /* ====== TOP INFO (Lokasi & Tanggal) ====== */
     .top-info {
       background-color: #003B73;
-      padding: 5px 15px; /* Kurangi padding */
+      padding: 5px 15px;
       display: flex;
       align-items: center;
-      justify-content: space-between; /* Lokasi di kiri, Tanggal di kanan */
+      justify-content: space-between;
     }
     body.dark-mode .top-info {
       background-color: #141627;
@@ -96,10 +112,11 @@
     }
     .date-info {
       display: flex;
-      flex-direction: column; /* Masehi di atas, Hijriah di bawah */
-      align-items: flex-end;   /* Rata kanan */
+      flex-direction: column;
+      align-items: flex-end;
     }
-    .masehi-date, .hijri-date {
+    .masehi-date,
+    .hijri-date {
       font-size: 14px;
     }
     .masehi-date {
@@ -131,11 +148,18 @@
       justify-content: center;
       align-items: center;
       gap: 30px;
-      flex-wrap: nowrap;
-      overflow-x: visible;
+      flex-wrap: wrap;
     }
     .feature-item {
       text-align: center;
+      flex: 0 0 calc(50% - 30px);
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+    @media (min-width: 768px) {
+      .feature-item {
+        flex: 0 0 calc(20% - 30px);
+      }
     }
     .feature-icon {
       width: 50px;
@@ -165,7 +189,7 @@
     .darkmode-card {
       background: #fff;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
       padding: 15px;
       display: flex;
       align-items: center;
@@ -230,6 +254,14 @@
       background-color: #141627;
       color: #fff;
     }
+    .emSimple_main_footer,
+    .emSimple_main_footer * {
+      border: none !important;
+    }
+    body.dark-mode .bg-white {
+      background-color: #141627 !important;
+      color: #fff !important;
+    }
 
     /* ====== NAVIGATION BAR (BOTTOM) ====== */
     .em_main_footer.ouline_footer.with__text {
@@ -285,8 +317,7 @@
       align-items: center;
       justify-content: center;
     }
-
-    /* ====== ANIMASI LINGKARAN HOVER ====== */
+    /* Animasi ripple di link nav */
     .btn_navLink.rippleCircle::before {
       content: "";
       position: absolute;
@@ -296,7 +327,7 @@
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.3);
+      background: rgba(255, 255, 255, 0.3);
       opacity: 0;
       pointer-events: none;
       transition: transform 0.5s ease, opacity 0.5s ease;
@@ -306,7 +337,7 @@
       opacity: 1;
     }
 
-    /* ====== CUSTOM MODAL STYLES ====== */
+    /* ====== MODAL CUSTOM STYLE ====== */
     .modal-content {
       border-radius: 12px;
       overflow: hidden;
@@ -317,35 +348,51 @@
     .modal-header .close {
       outline: none;
     }
+    body.dark-mode .padding-t-10.padding-b-10 {
+      background-color: #24263C;
+      color: #fff;
+    }
+
+    /* Hilangkan underline & animasi hover di modal link */
+    .no-underline {
+      text-decoration: none !important;
+      color: inherit !important;
+    }
+    .no-underline:hover,
+    .no-underline:focus,
+    .no-underline:active {
+      text-decoration: none !important;
+      color: inherit !important;
+      background: transparent !important;
+      transform: none !important;
+    }
   </style>
 </head>
 <body>
   <div id="wrapper">
-
-    <!-- HEADER: Tulis "DASHBOARD" di tengah -->
+    <!-- HEADER -->
     <header class="main_haeder header-sticky multi_item">
       <h3 class="header-title">DASHBOARD</h3>
     </header>
 
-    <!-- TOP INFO: Lokasi & Tanggal -->
+    <!-- TOP INFO -->
     <section class="top-info">
       <div class="location-bubble">
         <i class="ri-map-pin-line"></i>
         <span id="user-location">Determining location...</span>
       </div>
-      <!-- Masehi di atas, Hijriah di bawah -->
       <div class="date-info">
         <span class="masehi-date">Loading date...</span>
         <span class="hijri-date"></span>
       </div>
     </section>
 
-    <!-- BANNER SECTION -->
+    <!-- BANNER -->
     <section class="banner-section">
       <img src="assets/img/banner-out-kita-berbagi-community.png" alt="Banner Komunitas">
     </section>
 
-    <!-- SECTION: All Features -->
+    <!-- ALL FEATURES -->
     <div id="content">
       <section class="all-features">
         <div class="features-row">
@@ -385,8 +432,8 @@
               <p class="feature-title">Doa</p>
             </div>
           </a>
-          <!-- Feature 5: Other (memicu modal) -->
-          <a href="#" data-toggle="modal" data-target="#mdllOthers" style="text-decoration:none;">
+          <!-- Feature 5: Other -->
+          <a href="javascript:void(0);" data-toggle="modal" data-target="#mdllOthers" style="text-decoration:none;">
             <div class="feature-item">
               <div class="feature-icon">
                 <i class="ri-compass-3-fill"></i>
@@ -397,7 +444,7 @@
         </div>
       </section>
 
-      <!-- SECTION: Dark / Light Mode Card -->
+      <!-- DARK/LIGHT MODE CARD -->
       <div class="darkmode-card">
         <div class="darkmode-info">
           <h5>Dark Mode</h5>
@@ -408,20 +455,20 @@
         </div>
       </div>
 
-      <!-- SECTION: FOOTER SEDERHANA -->
+      <!-- FOOTER -->
       <main class="emPage__public">
-        <section class="emSimple_main_footer margin-t-10 border-t border-t-solid border-snow bg-white d-flex justify-content-center text-center padding-20">
+        <section class="emSimple_main_footer margin-t-10 bg-white d-flex justify-content-center text-center padding-20">
           <div class="padding-t-10 padding-b-10">
             <a href="index2.html" class="brand_sm margin-b-20 d-block">
               <img src="KitaBerbagiCommunity/kitaberbagi-community-logo-pjg.png" alt="">
             </a>
             <h3 class="size-13 weight-400 color-secondary margin-b-10">
-              Copyright © KitaBerbagi Community 2025. All Rights Reserved.
+              Copyright © Kita Berbagi Community 2025. All Rights Reserved.
             </h3>
             <p class="size-12 color-text margin-b-20">
-              Nepro is Mobile Multipurpose Template. Professionally built with a high UX to give your page the great look.
+              Kita Berbagi Community adalah komunitas berbagi kebaikan sesama umat manusia.
             </p>
-            <div class="itemNetworks mt-2 emBlock__border">
+            <div class="itemNetworks mt-2">
               <a href="#" class="btn facebook">
                 <img src="assets/img/icon/facebook.svg" alt="">
               </a>
@@ -445,82 +492,106 @@
           </div>
         </section>
       </main>
-    </div><!-- end content -->
-  </div><!-- end wrapper -->
+    </div>
+  </div>
 
   <!-- MODAL "Other" -->
-  <div class="modal transition-bottom screenFull defaultModal mdlladd__rate mdllOptios_grid fade" id="mdllOthers" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+  <div class="modal fade" id="mdllOthers" tabindex="-1" role="dialog" aria-labelledby="mdllOthersLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <!-- Modal Header -->
-        <div class="modal-header border-0 p-2 justify-content-center">
-          <h5 class="modal-title" id="exampleModalLabel">More Features</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline:none;">
+        <!-- Header Modal -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="mdllOthersLabel">More Ramadan Features</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline: none;">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <!-- Modal Body -->
-        <div class="modal-body px-0">
-          <div class="np__bkOperationsService padding-t-30 env-pb">
-            <!-- Baris pertama ikon -->
-            <div class="em__actions d-flex justify-content-around flex-wrap">
-              <a href="al-quran.html" class="btn text-center mb-3">
-                <div class="icon bg-red bg-opacity-10 mb-2" style="border-radius:10px; padding:10px;">
-                  <i class="ri-book-fill" style="color:#ff4040;"></i>
-                </div>
-                <span>Al-Qur'an</span>
-              </a>
-              <a href="jadwal_sholat.html" class="btn text-center mb-3">
-                <div class="icon bg-green bg-opacity-10 mb-2" style="border-radius:10px; padding:10px;">
-                  <i class="ri-time-fill" style="color:green;"></i>
-                </div>
-                <span>Jadwal Sholat</span>
-              </a>
-              <a href="hadits.html" class="btn text-center mb-3">
-                <div class="icon bg-yellow bg-opacity-10 mb-2" style="border-radius:10px; padding:10px;">
-                  <i class="ri-book-2-fill" style="color:#fa9905;"></i>
-                </div>
-                <span>Hadis</span>
-              </a>
-              <a href="doa.html" class="btn text-center mb-3">
-                <div class="icon bg-primary bg-opacity-10 mb-2" style="border-radius:10px; padding:10px;">
-                  <i class="ri-hand-heart-fill" style="color:#556fff;"></i>
-                </div>
-                <span>Doa</span>
-              </a>
-              <a href="kiblat.html" class="btn text-center mb-3">
-                <div class="icon bg-secondary bg-opacity-10 mb-2" style="border-radius:10px; padding:10px;">
-                  <i class="ri-compass-3-fill" style="color:#6c757d;"></i>
-                </div>
-                <span>Kiblat</span>
-              </a>
-              <a href="zakat.html" class="btn text-center mb-3">
-                <div class="icon bg-info bg-opacity-10 mb-2" style="border-radius:10px; padding:10px;">
-                  <i class="ri-wallet-3-line" style="color:#17a2b8;"></i>
-                </div>
-                <span>Zakat</span>
-              </a>
-            </div>
-            <!-- Baris kedua ikon -->
-            <div class="em__actions d-flex justify-content-around flex-wrap">
-              <a href="kalender.html" class="btn text-center mb-3">
-                <div class="icon bg-pink bg-opacity-10 mb-2" style="border-radius:10px; padding:10px;">
-                  <i class="ri-calendar-2-fill" style="color:#e83e8c;"></i>
-                </div>
-                <span>Kalender</span>
-              </a>
-              <!-- Tambahkan ikon lain jika diperlukan -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        <!-- Body Modal -->
+        <div class="modal-body">
+          <div class="container">
+            <div class="row justify-content-center">
+              <!-- Kiblat -->
+              <div class="col-6 col-md-4 col-lg-2 text-center mb-3">
+                <a href="ramadan/kiblat.html" class="d-block no-underline">
+                  <div 
+                    class="icon bg-secondary mx-auto d-flex align-items-center justify-content-center" 
+                    style="width:50px; height:50px; border-radius:10px;"
+                  >
+                    <i class="ri-compass-3-fill" style="color:#fff; font-size:22px;"></i>
+                  </div>
+                  <span style="font-size:12px;">Kiblat</span>
+                </a>
+              </div>
+              <!-- Jadwal Sholat -->
+              <div class="col-6 col-md-4 col-lg-2 text-center mb-3">
+                <a href="JadwalSholat/jadwal.html" class="d-block no-underline">
+                  <div 
+                    class="icon bg-green mx-auto d-flex align-items-center justify-content-center" 
+                    style="width:50px; height:50px; border-radius:10px;"
+                  >
+                    <i class="ri-time-fill" style="color:#fff; font-size:22px;"></i>
+                  </div>
+                  <span style="font-size:12px;">Sholat</span>
+                </a>
+              </div>
+              <!-- Doa -->
+              <div class="col-6 col-md-4 col-lg-2 text-center mb-3">
+                <a href="Doa/index.html" class="d-block no-underline">
+                  <div 
+                    class="icon bg-primary mx-auto d-flex align-items-center justify-content-center" 
+                    style="width:50px; height:50px; border-radius:10px;"
+                  >
+                    <i class="ri-hand-heart-fill" style="color:#fff; font-size:22px;"></i>
+                  </div>
+                  <span style="font-size:12px;">Doa</span>
+                </a>
+              </div>
+              <!-- Zakat -->
+              <div class="col-6 col-md-4 col-lg-2 text-center mb-3">
+                <a href="ramadan/zakat.html" class="d-block no-underline">
+                  <div 
+                    class="icon bg-info mx-auto d-flex align-items-center justify-content-center" 
+                    style="width:50px; height:50px; border-radius:10px;"
+                  >
+                    <i class="ri-wallet-3-line" style="color:#fff; font-size:22px;"></i>
+                  </div>
+                  <span style="font-size:12px;">Zakat</span>
+                </a>
+              </div>
+              <!-- Kalender -->
+              <div class="col-6 col-md-4 col-lg-2 text-center mb-3">
+                <a href="Hijriah/index.html" class="d-block no-underline">
+                  <div 
+                    class="icon bg-pink mx-auto d-flex align-items-center justify-content-center" 
+                    style="width:50px; height:50px; border-radius:10px;"
+                  >
+                    <i class="ri-calendar-2-fill" style="color:#fff; font-size:22px;"></i>
+                  </div>
+                  <span style="font-size:12px;">Kalender</span>
+                </a>
+              </div>
+              <!-- Al-Qur'an -->
+              <div class="col-6 col-md-4 col-lg-2 text-center mb-3">
+                <a href="Alquran/index.html" class="d-block no-underline">
+                  <div 
+                    class="icon bg-red mx-auto d-flex align-items-center justify-content-center" 
+                    style="width:50px; height:50px; border-radius:10px;"
+                  >
+                    <i class="ri-book-fill" style="color:#fff; font-size:22px;"></i>
+                  </div>
+                  <span style="font-size:12px;">Al-Qur'an</span>
+                </a>
+              </div>
+            </div><!-- row -->
+          </div><!-- container -->
+        </div><!-- .modal-body -->
+      </div><!-- .modal-content -->
+    </div><!-- .modal-dialog -->
+  </div><!-- .modal.fade -->
 
   <!-- NAVIGATION BAR BAWAH -->
   <footer class="em_main_footer ouline_footer with__text">
     <div class="em_body_navigation">
-      <!-- Calendar (left) -->
       <div class="item_link">
         <a href="Hijriah/index.html" class="btn_navLink rippleCircle">
           <div class="icon_current">
@@ -529,7 +600,6 @@
           <div class="txt__tile">Calendar</div>
         </a>
       </div>
-      <!-- Home (center) -->
       <div class="item_link">
         <a href="index2.html" class="btn_navLink without_active rippleCircle">
           <div class="icon_current">
@@ -538,7 +608,6 @@
           <div class="txt__tile">Home</div>
         </a>
       </div>
-      <!-- Settings (right) -->
       <div class="item_link">
         <a href="#" class="btn_navLink rippleCircle">
           <div class="icon_current">
@@ -550,7 +619,7 @@
     </div>
   </footer>
 
-  <!-- ====== JAVASCRIPT: jQuery, Popper, Bootstrap 4 ====== -->
+  <!-- JAVASCRIPT: jQuery, Popper, Bootstrap 4 -->
   <script src="assets/js/jquery-3.6.0.js"></script>
   <script src="assets/js/popper.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
@@ -559,8 +628,8 @@
   <script src="assets/js/vendor/sharer.js"></script>
   <script src="assets/js/vendor/short-and-sweet.min.js"></script>
   <script src="assets/js/vendor/jquery.knob.min.js"></script>
-  <script src="assets/js/main.js" defer></script>
-  <script src="assets/js/pwa-services.js"></script>
+  <script src="assets/js/main.js"></script>
+  <!-- <script src="assets/js/pwa-services.js"></script> -->
 
   <script>
     // Fungsi format tanggal Masehi
@@ -590,7 +659,6 @@
       let hijriYear = 30 * n + j - 30;
       return { day: hijriDay, month: hijriMonth, year: hijriYear };
     }
-
     const hijriMonths = [
       "Muharram", "Safar", "Rabi'ul Awal", "Rabi'ul Akhir",
       "Jumadil Awal", "Jumadil Akhir", "Rajab", "Sha'ban",
@@ -603,11 +671,8 @@
 
     // Tampilkan Tanggal Masehi & Hijriyah
     const today = new Date();
-    const masehiDate = formatDate(today);
-    const hijriObj = gregorianToHijri(today);
-    const hijriDate = `${hijriObj.day} ${hijriMonths[hijriObj.month - 1]}, ${hijriObj.year}`;
-    document.querySelector(".masehi-date").textContent = masehiDate;
-    document.querySelector(".hijri-date").textContent = hijriDate;
+    document.querySelector(".masehi-date").textContent = formatDate(today);
+    document.querySelector(".hijri-date").textContent = formatHijri(today);
 
     // Geolocation untuk Lokasi
     if (navigator.geolocation) {

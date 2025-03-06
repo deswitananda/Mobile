@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Modal</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+</head>
+<body>
+  <!-- Trigger modal -->
+  <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal">Buka Modal</a>
+
+  <!-- MODAL "Other" -->
+    <div class="modal fade" id="mdllOthers" tabindex="-1" role="dialog" aria-labelledby="mdllOthersLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="mdllOthersLabel">More Ramadan Features</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline: none;">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Grid Icon menggunakan Bootstrap grid -->
+              <div class="container">
+                <div class="row">
+                  <!-- Kiblat -->
+                  <div class="col-4 text-center mb-3">
+                    <a href="kiblat.html">
+                      <div class="icon bg-secondary" style="width:50px; height:50px; border-radius:10px; display: flex; align-items: center; justify-content: center;">
+                        <i class="ri-compass-3-fill" style="color:#fff; font-size:22px;"></i>
+                      </div>
+                      <span style="font-size:12px;">Kiblat</span>
+                    </a>
+                  </div>
+                  <!-- Jadwal Sholat -->
+                  <div class="col-4 text-center mb-3">
+                    <a href="jadwal_sholat.html">
+                      <div class="icon bg-green" style="width:50px; height:50px; border-radius:10px; display: flex; align-items: center; justify-content: center;">
+                        <i class="ri-time-fill" style="color:#fff; font-size:22px;"></i>
+                      </div>
+                      <span style="font-size:12px;">Sholat</span>
+                    </a>
+                  </div>
+                  <!-- Doa -->
+                  <div class="col-4 text-center mb-3">
+                    <a href="doa.html">
+                      <div class="icon bg-primary" style="width:50px; height:50px; border-radius:10px; display: flex; align-items: center; justify-content: center;">
+                        <i class="ri-hand-heart-fill" style="color:#fff; font-size:22px;"></i>
+                      </div>
+                      <span style="font-size:12px;">Doa</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="row">
+                  <!-- Zakat -->
+                  <div class="col-4 text-center mb-3">
+                    <a href="zakat.html">
+                      <div class="icon bg-info" style="width:50px; height:50px; border-radius:10px; display: flex; align-items: center; justify-content: center;">
+                        <i class="ri-wallet-3-line" style="color:#fff; font-size:22px;"></i>
+                      </div>
+                      <span style="font-size:12px;">Zakat</span>
+                    </a>
+                  </div>
+                  <!-- Kalender -->
+                  <div class="col-4 text-center mb-3">
+                    <a href="kalender.html">
+                      <div class="icon bg-pink" style="width:50px; height:50px; border-radius:10px; display: flex; align-items: center; justify-content: center;">
+                        <i class="ri-calendar-2-fill" style="color:#fff; font-size:22px;"></i>
+                      </div>
+                      <span style="font-size:12px;">Kalender</span>
+                    </a>
+                  </div>
+                  <!-- Al‑Qur'an -->
+                  <div class="col-4 text-center mb-3">
+                    <a href="alquran.html">
+                      <div class="icon bg-red" style="width:50px; height:50px; border-radius:10px; display: flex; align-items: center; justify-content: center;">
+                        <i class="ri-book-fill" style="color:#fff; font-size:22px;"></i>
+                      </div>
+                      <span style="font-size:12px;">Al‑Qur'an</span>
+                    </a>
+                  </div>
+                </div>
+              </div><!-- .container -->
+            </div><!-- .modal-body -->
+          </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- .modal.fade -->
+
+
+  <script src="assets/js/jquery-3.6.0.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+</body>
+</html>

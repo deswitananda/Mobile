@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Template Kiblat Responsif</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Bootstrap CSS (lokal) -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  
+  <!-- Remixicon via CDN (agar ikon selalu muncul) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+  
+  <style>
+    /* ====== GLOBAL STYLES ====== */
+    body {
+      /* Latar belakang gradasi lembut */
+      background: linear-gradient(135deg, #f0f9ff, #ffffff);
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #003B73;
+      /* Tambahkan space untuk menampung navigation bar di bawah */
+      padding-bottom: 70px; 
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 15px;
+    }
+    .title {
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #003B73;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 15px;
+      color: #666;
+      margin-bottom: 25px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.4;
+    }
+
+    /* ====== CARD KIBLAT ====== */
+    .card-kiblat {
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      padding: 30px 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .card-kiblat:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+    }
+    .compass-icon {
+      font-size: 90px;
+      color: #003B73;
+      margin-bottom: 15px;
+    }
+    .btn-locate {
+      background-color: #003B73;
+      border: none;
+      color: #fff;
+      border-radius: 30px;
+      padding: 12px 25px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-locate i {
+      font-size: 18px;
+    }
+    .btn-locate:hover {
+      background-color: #002b57;
+    }
+    .direction-info {
+      font-size: 18px;
+      font-weight: bold;
+      color: #003B73;
+      margin-top: 15px;
+      display: none;
+    }
+    .direction-text {
+      font-size: 16px;
+      color: #003B73;
+      margin-top: 5px;
+      display: none;
+    }
+
+    /* ====== NAVIGATION BAR BAWAH ====== */
+    footer.em_main_footer.ouline_footer.with__text {
+      background-color: #003B73;
+      padding: 8px 0;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: 1000;
+    }
+    .em_body_navigation {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    .em_body_navigation .item_link {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+    .btn_navLink {
+      text-decoration: none;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: color 0.3s ease;
+      font-size: 12px;
+      position: relative;
+      overflow: hidden;
+      padding: 5px;
+    }
+    .btn_navLink:hover {
+      color: #d1e0f0;
+    }
+    .icon_current i {
+      font-size: 22px;
+      margin-bottom: 3px;
+    }
+    .txt__tile {
+      font-size: 12px;
+    }
+    /* Ripple effect (opsional) */
+    .btn_navLink.rippleCircle::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+    .btn_navLink.rippleCircle:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    /* ====== RESPONSIF ====== */
+    @media (max-width: 576px) {
+      .title {
+        font-size: 24px;
+      }
+      .subtitle {
+        font-size: 14px;
+      }
+      .compass-icon {
+        font-size: 70px;
+      }
+      .btn-locate {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+      .direction-info {
+        font-size: 16px;
+      }
+      .direction-text {
+        font-size: 14px;
+      }
+      .icon_current i {
+        font-size: 20px;
+      }
+      .txt__tile {
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">Arah Kiblat</div>
+    <div class="subtitle">
+      Aktifkan GPS Anda dan klik tombol di bawah untuk mengetahui arah kiblat secara akurat. 
+      Pastikan perangkat Anda mengizinkan akses lokasi.
+    </div>
+    <div class="card-kiblat">
+      
+      
+      <!-- Tombol Kiblat dengan ikon kecil -->
+      <button class="btn btn-locate" id="locateKiblat">
+        <i class="ri-map-pin-line"></i> Temukan Arah Kiblat
+      </button>
+      
+      <!-- Hasil Perhitungan Arah Kiblat -->
+      <div class="direction-info" id="directionDisplay">
+        Arah Kiblat: <span id="qiblaDegree">0</span>°
+      </div>
+      <div class="direction-text" id="cardinalDirection"></div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION BAR BAWAH -->
+  <footer class="em_main_footer ouline_footer with__text">
+    <div class="em_body_navigation">
+      <!-- Link ke Hijriah/index.html -->
+      <div class="item_link">
+        <a href="Hijriah/index.html" class="btn_navLink rippleCircle">
+          <div class="icon_current">
+            <!-- Ikon Kalender -->
+            <i class="ri-calendar-line"></i>
+          </div>
+          <div class="txt__tile">Calendar</div>
+        </a>
+      </div>
+      <!-- Link ke Home (misal ../index2.html jika di folder lain) -->
+      <div class="item_link">
+        <a href="../index2.html" class="btn_navLink without_active rippleCircle">
+          <div class="icon_current">
+            <!-- Ikon Home -->
+            <i class="ri-home-4-line"></i>
+          </div>
+          <div class="txt__tile">Home</div>
+        </a>
+      </div>
+      <!-- Link ke Settings (misal ../settings.html jika di folder lain) -->
+      <div class="item_link">
+        <a href="../settings.html" class="btn_navLink rippleCircle">
+          <div class="icon_current">
+            <!-- Ikon Settings -->
+            <i class="ri-settings-4-line"></i>
+          </div>
+          <div class="txt__tile">Settings</div>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS dan Dependencies -->
+  <script src="assets/js/jquery-3.6.0.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  
+  <script>
+    // Fungsi konversi derajat <-> radian
+    function toRadians(deg) {
+      return deg * Math.PI / 180;
+    }
+    function toDegrees(rad) {
+      return rad * 180 / Math.PI;
+    }
+    
+    // Hitung arah kiblat
+    function calculateQiblaDirection(lat, lon) {
+      // Koordinat Ka'bah (Makkah)
+      const kaabaLat = toRadians(21.4225);
+      const kaabaLon = toRadians(39.8262);
+      const userLatRad = toRadians(lat);
+      const userLonRad = toRadians(lon);
+      const deltaLon = kaabaLon - userLonRad;
+
+      const x = Math.sin(deltaLon);
+      const y = Math.cos(userLatRad) * Math.tan(kaabaLat) - Math.sin(userLatRad) * Math.cos(deltaLon);
+      let qibla = toDegrees(Math.atan2(x, y));
+      if (qibla < 0) qibla += 360;
+      return qibla;
+    }
+
+    // Arah kardinal sederhana
+    function getCardinalDirection(angle) {
+      if (angle < 22.5 || angle >= 337.5) return "Utara";
+      else if (angle >= 22.5 && angle < 67.5) return "Timur Laut";
+      else if (angle >= 67.5 && angle < 112.5) return "Timur";
+      else if (angle >= 112.5 && angle < 157.5) return "Tenggara";
+      else if (angle >= 157.5 && angle < 202.5) return "Selatan";
+      else if (angle >= 202.5 && angle < 247.5) return "Barat Daya";
+      else if (angle >= 247.5 && angle < 292.5) return "Barat";
+      else if (angle >= 292.5 && angle < 337.5) return "Barat Laut";
+      return "";
+    }
+
+    // Klik tombol "Temukan Arah Kiblat"
+    document.getElementById('locateKiblat').addEventListener('click', () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            const lat = pos.coords.latitude;
+            const lon = pos.coords.longitude;
+            const qiblaDeg = calculateQiblaDirection(lat, lon).toFixed(2);
+            document.getElementById('qiblaDegree').textContent = qiblaDeg;
+            document.getElementById('directionDisplay').style.display = 'block';
+
+            const cardinal = getCardinalDirection(qiblaDeg);
+            const textCardinal = `(${cardinal})`;
+            document.getElementById('cardinalDirection').textContent = textCardinal;
+            document.getElementById('cardinalDirection').style.display = 'block';
+
+            alert(`Arah Kiblat: ${qiblaDeg}° ${textCardinal} dari Utara`);
+          },
+          (err) => {
+            alert(`Gagal mendapatkan lokasi: ${err.message}`);
+          }
+        );
+      } else {
+        alert("Geolocation tidak didukung oleh browser Anda.");
+      }
+    });
+  </script>
+</body>
+</html>

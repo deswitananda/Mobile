@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Index2 - Kalkulator Zakat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS (lokal) -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <!-- Remixicon via CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+
+  <style>
+    /* ====== GLOBAL STYLES ====== */
+    body {
+      background: linear-gradient(135deg, #F2F6FC, #ffffff);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #003B73;
+      padding-bottom: 70px; /* Agar konten tidak tertutup navigation bar */
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    .title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #003B73;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+    /* ====== CARD ZAKAT ====== */
+    .card-zakat {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .card-zakat h2 {
+      font-size: 26px;
+      color: #003B73;
+      margin-bottom: 25px;
+    }
+    .form-group label {
+      font-weight: bold;
+      color: #003B73;
+    }
+    .form-control {
+      border-radius: 25px;
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      transition: border-color 0.3s ease;
+    }
+    .form-control:focus {
+      border-color: #003B73;
+      box-shadow: none;
+    }
+    .btn-calculate {
+      background-color: #003B73;
+      border: none;
+      color: #fff;
+      border-radius: 25px;
+      padding: 12px 20px;
+      font-size: 18px;
+      width: 100%;
+      margin-top: 15px;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+    .btn-calculate:hover {
+      background-color: #002b57;
+    }
+    .result {
+      margin-top: 25px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #003B73;
+      display: none;
+    }
+    /* ====== NAVIGATION BAR BAWAH ====== */
+    footer.em_main_footer.ouline_footer.with__text {
+      background-color: #003B73;
+      padding: 8px 0;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: 1000;
+    }
+    .em_body_navigation {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    .em_body_navigation .item_link {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+    .btn_navLink {
+      text-decoration: none;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: color 0.3s ease;
+      font-size: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn_navLink:hover {
+      color: #d1e0f0;
+    }
+    .icon_current i {
+      font-size: 24px;
+      margin-bottom: 3px;
+    }
+    .txt__tile {
+      font-size: 12px;
+    }
+    /* Ripple effect (opsional) */
+    .btn_navLink.rippleCircle::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+    .btn_navLink.rippleCircle:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    /* ====== RESPONSIF ====== */
+    @media (max-width: 576px) {
+      .title {
+        font-size: 28px;
+      }
+      .card-zakat h2 {
+        font-size: 22px;
+      }
+      .btn-calculate {
+        font-size: 16px;
+      }
+      .result {
+        font-size: 18px;
+      }
+      .icon_current i {
+        font-size: 22px;
+      }
+      .txt__tile {
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Konten Halaman -->
+  <div class="container">
+    <div class="title">Hitung Zakat</div>
+    <div class="subtitle">
+      Masukkan jumlah harta Anda untuk menghitung zakat 2,5% secara otomatis.
+    </div>
+    <div class="card-zakat">
+      <h2>Kalkulator Zakat</h2>
+      <form id="zakatForm">
+        <div class="form-group">
+          <label for="wealthInput">Jumlah Harta (Rp):</label>
+          <input type="number" class="form-control" id="wealthInput" placeholder="Masukkan jumlah harta Anda">
+        </div>
+        <button type="submit" class="btn-calculate">Hitung Zakat</button>
+      </form>
+      <div class="result" id="zakatResult">
+        Zakat Anda: <span id="zakatAmount">0</span> Rp
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION BAR BAWAH -->
+  <footer class="em_main_footer ouline_footer with__text">
+    <div class="em_body_navigation">
+      <!-- Link ke Hijriah/index.html -->
+      <div class="item_link">
+        <a href="Hijriah/index.html" class="btn_navLink rippleCircle">
+          <div class="icon_current">
+            <i class="ri-calendar-line"></i>
+          </div>
+          <div class="txt__tile">Calendar</div>
+        </a>
+      </div>
+      <!-- Link ke Home (gunakan path relatif ke direktori induk karena file index2.html berada di luar folder ini) -->
+      <div class="item_link">
+        <a href="../index2.html" class="btn_navLink without_active rippleCircle">
+          <div class="icon_current">
+            <i class="ri-home-4-line"></i>
+          </div>
+          <div class="txt__tile">Home</div>
+        </a>
+      </div>
+      <!-- Link ke Settings (misal file settings.html berada di direktori induk) -->
+      <div class="item_link">
+        <a href="../settings.html" class="btn_navLink rippleCircle">
+          <div class="icon_current">
+            <i class="ri-settings-4-line"></i>
+          </div>
+          <div class="txt__tile">Settings</div>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS dan dependencies -->
+  <script src="assets/js/jquery-3.6.0.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script>
+    // Kalkulator Zakat
+    document.getElementById('zakatForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var wealth = parseFloat(document.getElementById('wealthInput').value);
+      if (!isNaN(wealth) && wealth > 0) {
+        var zakat = wealth * 0.025;
+        document.getElementById('zakatAmount').textContent = zakat.toFixed(2);
+        document.getElementById('zakatResult').style.display = 'block';
+      } else {
+        alert("Silakan masukkan jumlah harta yang valid.");
+      }
+    });
+  </script>
+</body>
+</html>
